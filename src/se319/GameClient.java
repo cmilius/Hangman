@@ -16,11 +16,14 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 import java.awt.Canvas;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GameClient extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldGuess;
+	private String letterGuess;
 
 	/**
 	 * Launch the application.
@@ -96,10 +99,6 @@ public class GameClient extends JFrame {
 		panel_Guess.add(textFieldGuess);
 		textFieldGuess.setColumns(10);
 		
-		JButton btnGuess = new JButton("Guess!");
-		btnGuess.setBounds(220, 22, 89, 23);
-		panel_Guess.add(btnGuess);
-		
 		JPanel panel_UsedLetters = new JPanel();
 		panel_UsedLetters.setBounds(10, 87, 319, 284);
 		contentPane.add(panel_UsedLetters);
@@ -108,5 +107,42 @@ public class GameClient extends JFrame {
 		JTextArea textAreaGuesses = new JTextArea();
 		textAreaGuesses.setBounds(10, 11, 299, 262);
 		panel_UsedLetters.add(textAreaGuesses);
+		
+		//guess button code
+		JButton btnGuess = new JButton("Guess!");
+		btnGuess.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				//check the input field of textFieldGuess
+				
+				//if there is more or less than one character
+				if((textFieldGuess.getText().length() > 1) || (textFieldGuess.getText().length()) <= 0){
+					System.out.println("Please only enter one character");
+					textFieldGuess.setText("");
+				}
+				//otherwise see if it is valid input
+				else{
+					//if the input is alphabetical
+					if(textFieldGuess.getText().matches("[a-zA-Z]+")){
+						System.out.println("Correct");
+						textFieldGuess.setText("");
+						
+						//add it to the guessed letters
+						textAreaGuesses.append(textFieldGuess.getText());
+						
+					}
+					//display error
+					else{
+						System.out.println("Please only enter the alphabet");
+						textFieldGuess.setText("");
+					}
+				}
+				
+			}
+		});
+		btnGuess.setBounds(220, 22, 89, 23);
+		panel_Guess.add(btnGuess);
+		
+		
 	}
 }
