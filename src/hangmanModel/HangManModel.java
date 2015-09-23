@@ -22,6 +22,15 @@ public class HangManModel {
 		guessesRemaining = 11;
 		wordDisplayed = initWordDisplay();
 	}
+	
+	public HangManModel(String filePath) {
+		wordBank = new WordBank(filePath);
+		lettersGuessed = new ArrayList<String>();
+		goalWord = wordBank.getRandomWord();
+		lettersRemaining = getNumUniqueLetters(goalWord);
+		guessesRemaining = 11;
+		wordDisplayed = initWordDisplay();
+	}
 
 	/**
 	 * Sets a new goal word from the WordBank
@@ -39,7 +48,6 @@ public class HangManModel {
 		if (lettersRemaining <= 0) {
 			return true;
 		}
-
 		return false;
 	}
 	
@@ -47,7 +55,6 @@ public class HangManModel {
 		if (guessesRemaining <= 0) {
 			return true;
 		}
-
 		return false;
 	}
 

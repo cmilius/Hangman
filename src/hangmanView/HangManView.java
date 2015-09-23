@@ -45,6 +45,9 @@ public class HangManView extends JFrame{
 	private JButton btnGuess;
 	private JTextArea textAreaGuesses;
 	private HangManCanvas hangmanCanvas;
+	private JMenuItem mntmNewGame;
+	private JMenuItem mntmOpenDictionary;
+	private JMenuItem mntmExit;
 	
 
 	public HangManView() throws FileNotFoundException {
@@ -63,10 +66,13 @@ public class HangManView extends JFrame{
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
-		JMenuItem mntmOpenDictionary = new JMenuItem("Open Dictionary");
+		mntmNewGame = new JMenuItem("New Game");
+		mnFile.add(mntmNewGame);
+		
+		mntmOpenDictionary = new JMenuItem("Open Dictionary");
 		mnFile.add(mntmOpenDictionary);
 		
-		JMenuItem mntmExit = new JMenuItem("Exit");
+		mntmExit = new JMenuItem("Exit");
 		mnFile.add(mntmExit);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -90,30 +96,6 @@ public class HangManView extends JFrame{
 		hangmanCanvas = new HangManCanvas();
 		hangmanCanvas.setBounds(0, 0, 345, 360);
 		panel_Graphic.add(hangmanCanvas);
-		
-		// Create a drawing field
-//		drawField = new JPanel(){
-//			public void paint(Graphics g) {
-//				Graphics2D g2d = (Graphics2D) g;
-//				//head
-//				g2d.drawOval(130, 100, 60, 60);
-//				//neck
-//				g2d.drawLine(160, 161, 160, 200);
-//				//left hand
-//				g2d.drawLine(110, 210, 160, 200);
-//				//right hand
-//				g2d.drawLine(210, 210, 160, 200);
-//				//body
-//				g2d.drawLine(160, 200, 160, 250);
-//				//left leg
-//				g2d.drawLine(110, 280, 160, 250);
-//				//right leg
-//				g2d.drawLine(210, 280, 160, 250);
-//			}
-//		};
-//		drawField.setBounds(0, 0, 345, 360);
-//		panel_Graphic.add(drawField);
-//		drawField.setLayout(null);
 		
 		JPanel panel_Guess = new JPanel();
 		panel_Guess.setBounds(10, 11, 319, 65);
@@ -162,6 +144,18 @@ public class HangManView extends JFrame{
 	
 	public void addBtnGuessController(HangManController hangController){
 		btnGuess.addActionListener(hangController);
+	}
+	
+	public void addNewGameController(HangManController hangController){
+		mntmNewGame.addActionListener(hangController);
+	}
+	
+	public void addOpenDictionaryController(HangManController hangController){
+		mntmOpenDictionary.addActionListener(hangController);
+	}
+	
+	public void addExitGameController(HangManController hangController){
+		mntmExit.addActionListener(hangController);
 	}
 	
 	public HangManCanvas getHangmanCanvas(){
