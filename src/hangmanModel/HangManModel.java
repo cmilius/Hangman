@@ -148,6 +148,8 @@ public class HangManModel {
 	}
 
 	public void guessLetter(String guess) {
+		boolean alreadyGuessed = false;
+		
 		if(guess == null || guess.length() == 0){
 			return;
 		}
@@ -172,8 +174,11 @@ public class HangManModel {
 				// we had a correct guess
 				correctGuess = true;
 
-				// we have one less letter remaining
-				lettersRemaining--;
+				if(!alreadyGuessed){
+					// we have one less letter remaining
+					lettersRemaining--;
+					alreadyGuessed=true;
+				}
 
 				// update the wordDisplayed
 				disp[i + i] = uGuess.charAt(0);

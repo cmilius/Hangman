@@ -35,7 +35,49 @@ public class HangManController implements ActionListener {
 	}
 	
 	public void updateViewCanvas(){
-		view.getHangmanCanvas().drawStandBase(view.getGraphics());
+		int guesses = model.getGuessesRemaining();
+		
+		if(guesses == 10){
+			view.getHangmanCanvas().drawStandBase(view.getHangmanCanvas().getGraphics());
+		}
+		else if(guesses == 9){
+			view.getHangmanCanvas().drawStandLeft(view.getHangmanCanvas().getGraphics());
+			
+		}
+		else if(guesses == 8){
+			view.getHangmanCanvas().drawStandTop(view.getHangmanCanvas().getGraphics());
+			
+		}
+		else if(guesses == 7){
+			view.getHangmanCanvas().drawNoose(view.getHangmanCanvas().getGraphics());
+			
+		}
+		else if(guesses == 6){
+			view.getHangmanCanvas().drawHead(view.getHangmanCanvas().getGraphics());
+			
+		}
+		else if(guesses == 5){
+			view.getHangmanCanvas().drawBody(view.getHangmanCanvas().getGraphics());
+			
+		}
+		else if(guesses == 4){
+			view.getHangmanCanvas().drawLegLeft(view.getHangmanCanvas().getGraphics());
+			
+		}
+		else if(guesses == 3){
+			view.getHangmanCanvas().drawLegRight(view.getHangmanCanvas().getGraphics());
+			
+		}
+		else if(guesses == 2){
+			view.getHangmanCanvas().drawArmLeft(view.getHangmanCanvas().getGraphics());
+			
+		}
+		else if(guesses == 1){
+			view.getHangmanCanvas().drawArmRight(view.getHangmanCanvas().getGraphics());
+		}
+		else if(guesses == 0){
+			view.getHangmanCanvas().drawEyes(view.getHangmanCanvas().getGraphics());
+		}
 	}
 	
 	@Override
@@ -48,12 +90,15 @@ public class HangManController implements ActionListener {
 		updateLetterGuess();
 		view.getWordsDisplayed().setText(model.getWordDisplay());
 		
+		updateViewCanvas();
+		
 		if(model.hasWon()){
 			JOptionPane.showMessageDialog(null, "Congrats, you have won!");
 		}
 		
 		else if(model.hasLost()){
 			JOptionPane.showMessageDialog(null, "You lost!");
+			view.getWordsDisplayed().setText(model.getGoalWord());
 		}
 	}
 	
