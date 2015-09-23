@@ -1,4 +1,4 @@
-package se319;
+package hangmanView;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -19,7 +19,7 @@ import java.awt.Canvas;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class GameClient extends JFrame {
+public class GameClientGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldGuess;
@@ -32,7 +32,7 @@ public class GameClient extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameClient frame = new GameClient();
+					GameClientGUI frame = new GameClientGUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,7 @@ public class GameClient extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GameClient() {
+	public GameClientGUI() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 500);
