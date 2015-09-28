@@ -81,15 +81,5 @@ public class WordBank {
 	 */
 	public ArrayList<String> getWordList(){
 		return words;
-	}
-	
-	public static void main(String[] args){
-		WordBank bank = new WordBank();
-		System.out.println(bank.getWordList());
-		System.out.println(bank.getRandomWord());
-		System.out.println(bank.getRandomWord());
-		System.out.println(bank.getRandomWord());
-		
-	}
-	
+	}	
 }

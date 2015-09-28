@@ -204,19 +204,4 @@ public class HangManModel {
 			guessesRemaining--;
 		}
 	}
-
-	public static void main(String[] args) throws FileNotFoundException {
-		HangManModel m = new HangManModel();
-		System.out.println(m.getGoalWord());
-		System.out.println(m.getNumUniqueLetters(m.getGoalWord()));
-		System.out.println(m.getWordDisplay() + ", " + m.getGuessesRemaining() + ", " + m.getLettersRemaining());
-		System.out.println(m.getLettersGuessed());
-		m.guessLetter("e");
-		System.out.println(m.getWordDisplay() + ", " + m.getGuessesRemaining() + ", " + m.getLettersRemaining());
-		System.out.println(m.getLettersGuessed());
-		m.guessLetter("s");
-		System.out.println(m.getWordDisplay() + ", " + m.getGuessesRemaining() + ", " + m.getLettersRemaining());
-		System.out.println(m.getLettersGuessed());
-
-	}
 }
